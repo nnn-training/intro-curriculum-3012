@@ -3,7 +3,7 @@ const http = require('http');
 const server = http
   .createServer((req, res) => {
     console.info(
-      '[' + new Date() + '] Requested by ' + req.socket.remoteAddress
+      '[' + new Date() + '] Requested by ' + req.socket.remoteAddress + 'でアクセスされました。'
     );
     res.writeHead(200, {
       'Content-Type': 'text/plain; charset=utf-8'
@@ -19,5 +19,5 @@ const server = http
   });
 const port = 8000;
 server.listen(port, () => {
-  console.log('Listening on ' + port);
+  console.info('Listening on ' + '[' + new Date() + '] port: ' + port  + '番でアクセスを待機しています');
 });
