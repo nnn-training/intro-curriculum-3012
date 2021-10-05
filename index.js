@@ -19,5 +19,6 @@ const server = http
   });
 const port = 8000;
 server.listen(port, () => {
-  console.log('Listening on ' + port);
+  console.info('[' + new Date() + '] %s ' + port , "Listening on");
+  console.info('[%o] %s ' + port , new Date(), "Listening on");
 });
