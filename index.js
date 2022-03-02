@@ -19,5 +19,5 @@ const server = http
   });
 const port = 8000;
 server.listen(port, () => {
-  console.log('Listening on ' + port);
+  console.info(`今この時間${new Date()}からサーバーが起動しています。ポートは、 ${port}です。`);
 });
