@@ -16,8 +16,8 @@ const server = http
   })
   .on('clientError', e => {
     console.error(`[${new Date()}] Client Error`, e);
-  });
+  })
 const port = 8000;
 server.listen(port, () => {
-  console.log(`Listening on ${port}`);
+  console.info(`[${new Date()}] Listening on ${port}`);
 });
