@@ -12,12 +12,18 @@ const server = http
     res.end();
   })
   .on('error', e => {
-    console.error(`[${new Date()}] Server Error`, e);
+    console.error(`[${dateDisplay()}] Server Error`, e);
   })
   .on('clientError', e => {
-    console.error(`[${new Date()}] Client Error`, e);
+    console.error(`[${dateDisplay()}] Client Error`, e);
   });
 const port = 8000;
 server.listen(port, () => {
-  console.log(`Listening on ${port}`);
+  console.info(`[${dateDisplay()}] Listening on ${port}`);
 });
+
+const dateDisplay = () => {
+  const newDate = new Date();
+  const dates = ['日', '月', '火', '水', '木', '金', '土'];
+  return `${newDate.getFullYear()}/${newDate.getMonth() + 1}/${newDate.getDate()}(${dates[newDate.getDay()]}) ${newDate.getHours()}:${newDate.getMinutes()}:${newDate.getSeconds()}`;
+}
