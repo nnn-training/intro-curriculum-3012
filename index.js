@@ -1,14 +1,20 @@
 'use strict';
 const http = require('node:http');
+
 const server = http
   .createServer((req, res) => {
     console.info(
-      `[${new Date()}] Requested by ${req.socket.remoteAddress}`
+      `[${new Date()}] 次のIPアドレスからアクセスがあったよ ${req.socket.remoteAddress}`
     );
     res.writeHead(200, {
       'Content-Type': 'text/plain; charset=utf-8'
     });
-    res.write(req.headers['user-agent']);
+    res.write(`<!DOCTYPE html>
+  <html lang="ja">
+    <body>
+      <h1>HTMLの一番大きい見出しを表示します</h1>
+    </body>
+  </html>`);
     res.end();
   })
   .on('error', e => {
@@ -19,5 +25,5 @@ const server = http
   });
 const port = 8000;
 server.listen(port, () => {
-  console.log(`Listening on ${port}`);
+  console.info(`[${new Date()}] Listening on ${port}`);
 });
